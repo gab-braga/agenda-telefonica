@@ -5,14 +5,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
 public class MenuPrincipal extends Application {
+
+    private static Stage menuPrincipal;
+
+    public static void setMenuPrincipal(Stage stage) {
+        menuPrincipal = stage;
+    }
+
+    public static Stage getMenuPrincipal() {
+        return menuPrincipal;
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        setMenuPrincipal(stage);
+        Parent root = FXMLLoader.load(getClass().getResource("menu_principal.fxml"));
         Scene scene = new Scene(root);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.setTitle("Agenda Telefônica");
         stage.setResizable(false);
