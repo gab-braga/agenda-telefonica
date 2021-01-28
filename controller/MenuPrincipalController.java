@@ -2,11 +2,10 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Contato;
 import view.AdicionarContato;
 import view.MenuPrincipal;
 
@@ -14,6 +13,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MenuPrincipalController implements Initializable {
+
+    @FXML
+    private AnchorPane root;
 
     @FXML
     private Button btn_pesquisar;
@@ -26,6 +28,21 @@ public class MenuPrincipalController implements Initializable {
 
     @FXML
     private AnchorPane conteiner;
+
+    @FXML
+    private TableView<Contato> tabela_contato;
+
+    @FXML
+    private TableColumn<Contato, String> coluna_nome;
+
+    @FXML
+    private TableColumn<Contato, String> coluna_telefone;
+
+    @FXML
+    private TableColumn<Contato, String> coluna_email;
+
+    @FXML
+    private TableColumn<Contato, String> coluna_endereco;
 
     private void preencherTabela(){
 

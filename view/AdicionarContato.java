@@ -29,6 +29,7 @@ public class AdicionarContato extends Application {
         setAdicionarContato(stage);
         Parent root = FXMLLoader.load(getClass().getResource("adicionar_contato.fxml"));
         Scene scene = new Scene(root);
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.setTitle("Adicionar Contato");
         stage.setResizable(false);
