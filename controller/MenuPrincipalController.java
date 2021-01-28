@@ -1,10 +1,14 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
-public class MenuPrincipalController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MenuPrincipalController implements Initializable {
 
     @FXML
     private Button btn_pesquisar;
@@ -18,4 +22,8 @@ public class MenuPrincipalController {
     @FXML
     private AnchorPane conteiner;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }
