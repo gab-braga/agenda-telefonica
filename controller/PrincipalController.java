@@ -12,14 +12,14 @@ import model.Agenda;
 import model.Contato;
 import view.AdicionarContato;
 import view.EditarContato;
-import view.MenuPrincipal;
+import view.Principal;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class MenuPrincipalController implements Initializable {
+public class PrincipalController implements Initializable {
 
     @FXML
     private AnchorPane root;
@@ -141,7 +141,7 @@ public class MenuPrincipalController implements Initializable {
         });
 
         btn_sair.setOnMouseClicked((action) -> {
-            MenuPrincipal.getMenuPrincipal().close();
+            Principal.getMenuPrincipal().close();
         });
 
         item_atualizar.setOnAction(action -> {

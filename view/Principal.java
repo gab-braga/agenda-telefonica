@@ -9,7 +9,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class MenuPrincipal extends Application {
+public class Principal extends Application {
 
     private static Stage menuPrincipal;
 
@@ -24,7 +24,7 @@ public class MenuPrincipal extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         setMenuPrincipal(stage);
-        Parent root = FXMLLoader.load(getClass().getResource("menu_principal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("principal.fxml"));
         Scene scene = new Scene(root);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);

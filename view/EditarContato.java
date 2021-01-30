@@ -36,7 +36,7 @@ public class EditarContato extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(MenuPrincipal.getMenuPrincipal());
+        stage.initOwner(Principal.getMenuPrincipal());
         setEditarContato(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editar_contato.fxml"));

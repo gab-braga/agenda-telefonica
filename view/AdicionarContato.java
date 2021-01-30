@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.StageStyle;
-import model.Contato;
 
 import java.io.IOException;
 
@@ -26,7 +25,7 @@ public class AdicionarContato extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(MenuPrincipal.getMenuPrincipal());
+        stage.initOwner(Principal.getMenuPrincipal());
         setAdicionarContato(stage);
         Parent root = FXMLLoader.load(getClass().getResource("adicionar_contato.fxml"));
         Scene scene = new Scene(root);
