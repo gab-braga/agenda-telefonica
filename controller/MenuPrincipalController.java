@@ -3,9 +3,7 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -62,12 +60,26 @@ public class MenuPrincipalController implements Initializable {
     @FXML
     private MenuItem item_deletar;
 
+    private boolean isFiltro = false;
+    private String filtro = null;
     private void pesquisar(String valor) {
-
+        if(valor.trim().isEmpty()) {
+            isFiltro = false;
+            filtro = null;
+            preencherTabela();
+        }
+        else {
+            isFiltro = true;
+            filtro = valor;
+            preencherTabela();
+        }
     }
 
     private void preencherTabela() {
         List<Contato> contatos = Agenda.consutarTodosContatos();
+        if(isFiltro) {
+            contatos = Agenda.consutarContatosFiltrados(this.filtro);
+        }
         if(contatos.size() > 0) {
             coluna_nome.setCellValueFactory(new PropertyValueFactory<Contato, String>("nome"));
             coluna_telefone.setCellValueFactory(new PropertyValueFactory<Contato, String>("telefone"));
@@ -78,7 +90,13 @@ public class MenuPrincipalController implements Initializable {
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("Ainda não existem contatos na agenda.");
+            if(isFiltro) {
+                alert.setContentText("Este contato ainda não está na agenda.");
+            }
+            else {
+                alert.setContentText("Ainda não existem contatos na agenda.");
+            }
+            alert.setHeaderText(null);
             alert.setTitle("ATENÇÃO");
             alert.showAndWait();
         }
@@ -127,6 +145,8 @@ public class MenuPrincipalController implements Initializable {
         });
 
         item_atualizar.setOnAction(action -> {
+            isFiltro = false;
+            filtro = null;
             preencherTabela();
         });
 

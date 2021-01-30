@@ -98,7 +98,7 @@ public class Agenda {
         return contatos;
     }
 
-    public static List<Contato> consutarTodosContato() {
+    public static List<Contato> consutarTodosContatos() {
         List<Contato> contatos = null;
         abrirConexao();
         try {
@@ -106,7 +106,21 @@ public class Agenda {
             PreparedStatement declaracao = conexao.prepareStatement(sql);
             contatos = obterListaContatos(declaracao.executeQuery());
         } catch (SQLException e) {
-            System.err.println("ERRO (Consutar todos os Contato): " + e.getMessage());
+            System.err.println("ERRO (Consutar Todos Contatos): " + e.getMessage());
+        }
+        fecharConexao();
+        return contatos;
+    }
+
+    public static List<Contato> consutarContatosFiltrados(String nome) {
+        List<Contato> contatos = null;
+        abrirConexao();
+        try {
+            String sql = "SELECT * FROM contato WHERE nome LIKE '%"+nome+"%';";
+            PreparedStatement declaracao = conexao.prepareStatement(sql);
+            contatos = obterListaContatos(declaracao.executeQuery());
+        } catch (SQLException e) {
+            System.err.println("ERRO (Consutar Contatos Filtrados): " + e.getMessage());
         }
         fecharConexao();
         return contatos;
