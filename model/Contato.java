@@ -1,19 +1,36 @@
 package model;
 
 public class Contato {
+    private int id;
     private String nome;
-    private String numeroTelefone;
+    private String telefone;
     private String email;
     private String endereco;
 
     public Contato() {
     }
 
-    public Contato(String nome, String numeroTelefone, String email, String endereco) {
+    public Contato(String nome, String telefone, String email, String endereco) {
         this.nome = nome;
-        this.numeroTelefone = numeroTelefone;
+        this.telefone = telefone;
         this.email = email;
         this.endereco = endereco;
+    }
+
+    public Contato(int id, String nome, String telefone, String email, String endereco) {
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.endereco = endereco;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -24,12 +41,12 @@ public class Contato {
         this.nome = nome;
     }
 
-    public String getNumeroTelefone() {
-        return numeroTelefone;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setNumeroTelefone(String numeroTelefone) {
-        this.numeroTelefone = numeroTelefone;
+    public void setTelefone(String numeroTelefone) {
+        this.telefone = numeroTelefone;
     }
 
     public String getEmail() {
