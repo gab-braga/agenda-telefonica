@@ -38,6 +38,14 @@ public class EditarContatoController implements Initializable {
 
     private int id;
 
+    public void preencherCampos(Contato contato) {
+        this.id = contato.getId();
+        campo_nome.setText(contato.getNome());
+        campo_telefone.setText(contato.getTelefone());
+        campo_email.setText(contato.getEmail());
+        campo_endereco.setText(contato.getEndereco());
+    }
+
     private boolean validarFormulario(String nome, String telefone, String email, String endereco) {
         return !(nome.trim().isEmpty() || telefone.trim().isEmpty() || email.trim().isEmpty() || endereco.trim().isEmpty());
     }
@@ -76,15 +84,7 @@ public class EditarContatoController implements Initializable {
     }
 
     private void sair() {
-        EditarContato.getEditarContato().close();
-    }
-
-    public void preencherCampos(Contato contato) {
-        id = contato.getId();
-        campo_nome.setText(contato.getNome());
-        campo_telefone.setText(contato.getTelefone());
-        campo_email.setText(contato.getEmail());
-        campo_endereco.setText(contato.getEndereco());
+        EditarContato.getEditarContatoStage().close();
     }
 
     @Override

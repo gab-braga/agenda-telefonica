@@ -11,25 +11,26 @@ import java.io.IOException;
 
 public class Principal extends Application {
 
-    private static Stage menuPrincipal;
+    private static Stage principal;
 
-    public static void setMenuPrincipal(Stage stage) {
-        menuPrincipal = stage;
+    public static void setPrincipal(Stage stage) {
+        principal = stage;
     }
 
-    public static Stage getMenuPrincipal() {
-        return menuPrincipal;
+    public static Stage getPrincipal() {
+        return principal;
     }
 
     @Override
     public void start(Stage stage) throws IOException {
-        setMenuPrincipal(stage);
-        Parent root = FXMLLoader.load(getClass().getResource("principal.fxml"));
-        Scene scene = new Scene(root);
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.setScene(scene);
         stage.setTitle("Agenda Telefônica");
         stage.setResizable(false);
+        setPrincipal(stage);
+
+        Parent root = FXMLLoader.load(getClass().getResource("principal.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
         stage.show();
     }
 

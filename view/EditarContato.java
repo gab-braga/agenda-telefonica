@@ -14,41 +14,41 @@ import java.io.IOException;
 
 public class EditarContato extends Application {
 
-    private Contato contatoEditar;
-    private static Stage editarContato;
+    private static Stage editarContatoStage;
+    private Contato contatoEdit;
 
-    public static Stage getEditarContato() {
-        return editarContato;
+    public static Stage getEditarContatoStage() {
+        return editarContatoStage;
     }
 
-    public static void setEditarContato(Stage stage) {
-        editarContato = stage;
+    public static void setEditarContatoStage(Stage stage) {
+        editarContatoStage = stage;
     }
 
-    public Contato getContatoEditar() {
-        return contatoEditar;
+    public Contato getContatoEdit() {
+        return contatoEdit;
     }
 
-    public void setContatoEditar(Contato contatoEditar) {
-        this.contatoEditar = contatoEditar;
+    public void setContatoEdit(Contato contatoEdit) {
+        this.contatoEdit = contatoEdit;
     }
 
     @Override
     public void start(Stage stage) throws IOException {
+        stage.initOwner(Principal.getPrincipal());
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(Principal.getMenuPrincipal());
-        setEditarContato(stage);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("Editar Contato");
+        stage.setResizable(false);
+        setEditarContatoStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("editar_contato.fxml"));
         Parent root = fxmlLoader.load();
         EditarContatoController controller = (EditarContatoController) fxmlLoader.getController();
-        controller.preencherCampos(contatoEditar);
+        controller.preencherCampos(contatoEdit);
 
         Scene scene = new Scene(root);
-        stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
-        stage.setTitle("Editar Contato");
-        stage.setResizable(false);
         stage.showAndWait();
     }
 

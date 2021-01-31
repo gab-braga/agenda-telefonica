@@ -24,15 +24,16 @@ public class AdicionarContato extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        stage.initOwner(Principal.getPrincipal());
         stage.initModality(Modality.WINDOW_MODAL);
-        stage.initOwner(Principal.getMenuPrincipal());
-        setAdicionarContato(stage);
-        Parent root = FXMLLoader.load(getClass().getResource("adicionar_contato.fxml"));
-        Scene scene = new Scene(root);
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.setScene(scene);
         stage.setTitle("Adicionar Contato");
         stage.setResizable(false);
+        setAdicionarContato(stage);
+
+        Parent root = FXMLLoader.load(getClass().getResource("adicionar_contato.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
         stage.showAndWait();
     }
 

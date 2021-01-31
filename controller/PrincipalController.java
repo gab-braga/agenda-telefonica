@@ -110,12 +110,12 @@ public class PrincipalController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText(null);
             alert.setTitle("ATENÇÃO");
-            alert.setContentText("Selecione um registro.");
+            alert.setContentText("Selecione um registro!");
             alert.showAndWait();
         }
         else {
             EditarContato editarContato = new EditarContato();
-            editarContato.setContatoEditar(contato);
+            editarContato.setContatoEdit(contato);
             editarContato.start(new Stage());
         }
     }
@@ -126,7 +126,7 @@ public class PrincipalController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setHeaderText(null);
             alert.setTitle("ATENÇÃO");
-            alert.setContentText("Selecione um registro.");
+            alert.setContentText("Selecione um registro!");
             alert.showAndWait();
         }
         else {
@@ -136,7 +136,7 @@ public class PrincipalController implements Initializable {
 
             cofirmacao.setTitle("DELEÇÃO");
             cofirmacao.setHeaderText(null);
-            cofirmacao.setContentText("Confirma a deleção?");
+            cofirmacao.setContentText("Tem certeza que deseja deletar esse contato?");
             cofirmacao.getButtonTypes().setAll(btnSim, btnNao);
             cofirmacao.showAndWait().ifPresent(botao -> {
                 if (botao == btnSim) {
@@ -152,11 +152,11 @@ public class PrincipalController implements Initializable {
         preencherTabela();
 
         btn_pesquisar.setOnMouseClicked((action) -> {
-            TextInputDialog dialogoNome = new TextInputDialog();
-            dialogoNome.setTitle("Pesquisar");
-            dialogoNome.setHeaderText("Entre com o nome do contato");
-            dialogoNome.setContentText(null);
-            dialogoNome.showAndWait().ifPresent(this::pesquisar);
+            TextInputDialog pesquisa = new TextInputDialog();
+            pesquisa.setTitle("Pesquisar");
+            pesquisa.setHeaderText(null);
+            pesquisa.setContentText("Digite o nome do contato:");
+            pesquisa.showAndWait().ifPresent(this::pesquisar);
         });
 
         btn_ad_usuario.setOnMouseClicked(action -> {
@@ -164,13 +164,13 @@ public class PrincipalController implements Initializable {
                 AdicionarContato adicionarContato = new AdicionarContato();
                 adicionarContato.start(new Stage());
             }
-            catch (Exception ex) {
-                System.err.println("ERRO (Tela Adicionar Contato): " + ex.getMessage());
+            catch (Exception e) {
+                System.err.println("ERRO (Tela Adicionar Contato): " + e.getMessage());
             }
         });
 
         btn_sair.setOnMouseClicked((action) -> {
-            Principal.getMenuPrincipal().close();
+            Principal.getPrincipal().close();
         });
 
         item_atualizar.setOnAction(action -> {

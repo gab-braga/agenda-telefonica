@@ -7,8 +7,8 @@ import java.util.List;
 public class Agenda {
 
     public Agenda() {
-//        criarBancoDeDados();
-        criarTabela();
+//        criarBancoDeDadosAgenda();
+        criarTabelaContato();
     }
 
     final static private String url = "jdbc:mysql://127.0.0.1:3306/agenda?verifyServerCertificate=false&useSSl=true";
@@ -35,7 +35,7 @@ public class Agenda {
         }
     }
 
-    private void criarBancoDeDados() {
+    private void criarBancoDeDadosAgenda() {
         abrirConexao();
         try {
             Statement declaracao = conexao.createStatement();
@@ -47,7 +47,7 @@ public class Agenda {
         fecharConexao();
     }
 
-    private void criarTabela() {
+    private void criarTabelaContato() {
         abrirConexao();
         try {
             String sql = "CREATE TABLE IF NOT EXISTS contato(" +
@@ -76,7 +76,7 @@ public class Agenda {
             declaracao.setString(2, contato.getTelefone());
             declaracao.setString(3, contato.getEndereco());
             declaracao.setString(4, contato.getEmail());
-            declaracao.execute();
+            declaracao.executeUpdate();
             flag = true;
         } catch (SQLException e) {
             System.err.println("ERRO (Adicionar Contato): " + e.getMessage());
@@ -85,7 +85,7 @@ public class Agenda {
         return flag;
     }
 
-    private static List<Contato> obterListaContatos(ResultSet pesquisa) throws SQLException {
+    private static List<Contato> obterListaContatosPelaConsulta(ResultSet pesquisa) throws SQLException {
         List<Contato> contatos = new ArrayList<>();
         while(pesquisa.next()) {
             int id = pesquisa.getInt("id");
@@ -104,7 +104,7 @@ public class Agenda {
         try {
             String sql = "SELECT * FROM contato;";
             PreparedStatement declaracao = conexao.prepareStatement(sql);
-            contatos = obterListaContatos(declaracao.executeQuery());
+            contatos = obterListaContatosPelaConsulta(declaracao.executeQuery());
         } catch (SQLException e) {
             System.err.println("ERRO (Consutar Todos Contatos): " + e.getMessage());
         }
@@ -118,7 +118,7 @@ public class Agenda {
         try {
             String sql = "SELECT * FROM contato WHERE nome LIKE '%"+nome+"%';";
             PreparedStatement declaracao = conexao.prepareStatement(sql);
-            contatos = obterListaContatos(declaracao.executeQuery());
+            contatos = obterListaContatosPelaConsulta(declaracao.executeQuery());
         } catch (SQLException e) {
             System.err.println("ERRO (Consutar Contatos Filtrados): " + e.getMessage());
         }
@@ -156,7 +156,7 @@ public class Agenda {
             declaracao.executeUpdate();
             flag = true;
         } catch (SQLException e) {
-            System.err.println("ERRO (Atualizar Contato): " + e.getMessage());
+            System.err.println("ERRO (Deletar Contato): " + e.getMessage());
         }
         fecharConexao();
         return flag;
