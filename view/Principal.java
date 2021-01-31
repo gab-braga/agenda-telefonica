@@ -1,3 +1,16 @@
+/**
+ * @author Francisco Gabriel Braga
+ */
+/*
+* Muito prazer, meu nome é Francisco Gabriel Braga do Nascimento,
+* sou estudante de Ciência da Computação pelo Instituto Federal de Educação,
+* Ciência e Tecnologia do Ceará Campus Tinaguá. Estudo programação dês de 2017,
+* a partir dai me apaixonei por essa vasta área. Ainda tenho pouca
+* experiência em programação, mas como alguém que eu não lembro disse
+* em algum lugar que eu também não lembro: "O sucesso é a soma de pequenos
+* esforços repetidos dia após dai". 😁
+* */
+
 package view;
 
 import javafx.application.Application;
