@@ -2,9 +2,11 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import model.Agenda;
 import model.Contato;
 import view.EditarContato;
 
@@ -36,8 +38,41 @@ public class EditarContatoController implements Initializable {
 
     private int id;
 
+    private boolean validarFormulario(String nome, String telefone, String email, String endereco) {
+        return !(nome.trim().isEmpty() || telefone.trim().isEmpty() || email.trim().isEmpty() || endereco.trim().isEmpty());
+    }
+
     private void editarContato() {
-        System.out.println(id);
+        String nome = campo_nome.getText();
+        String telefone = campo_telefone.getText();
+        String email = campo_email.getText();
+        String endereco = campo_endereco.getText();
+
+        if(validarFormulario(nome, telefone, email, endereco)) {
+            Contato contato = new Contato(this.id, nome, telefone, email, endereco);
+            if(Agenda.atualizarContato(contato)) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("AVISO");
+                alert.setHeaderText(null);
+                alert.setContentText("Contato editado.");
+                alert.showAndWait();
+                sair();
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERRO");
+                alert.setHeaderText(null);
+                alert.setContentText("Erro ao editar contato.");
+                alert.showAndWait();
+            }
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("ATENÇÃO");
+            alert.setHeaderText(null);
+            alert.setContentText("Preencha todos os campos!");
+            alert.showAndWait();
+        }
     }
 
     private void sair() {

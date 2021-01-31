@@ -62,6 +62,7 @@ public class PrincipalController implements Initializable {
 
     private boolean isFiltro = false;
     private String filtro = null;
+
     private void pesquisar(String valor) {
         if(valor.trim().isEmpty()) {
             isFiltro = false;
@@ -87,6 +88,7 @@ public class PrincipalController implements Initializable {
             coluna_endereco.setCellValueFactory(new PropertyValueFactory<Contato, String>("endereco"));
             ObservableList<Contato> itens = FXCollections.observableArrayList(contatos);
             tabela_contato.setItems(itens);
+            tabela_contato.refresh();
         }
         else{
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -115,6 +117,33 @@ public class PrincipalController implements Initializable {
             EditarContato editarContato = new EditarContato();
             editarContato.setContatoEditar(contato);
             editarContato.start(new Stage());
+        }
+    }
+
+    private void deletar() {
+        Contato contato = tabela_contato.getSelectionModel().getSelectedItem();
+        if(contato == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText(null);
+            alert.setTitle("ATENÇÃO");
+            alert.setContentText("Selecione um registro.");
+            alert.showAndWait();
+        }
+        else {
+            Alert cofirmacao = new Alert(Alert.AlertType.CONFIRMATION);
+            ButtonType btnSim = new ButtonType("Sim");
+            ButtonType btnNao = new ButtonType("Não");
+
+            cofirmacao.setTitle("DELEÇÃO");
+            cofirmacao.setHeaderText(null);
+            cofirmacao.setContentText("Confirma a deleção?");
+            cofirmacao.getButtonTypes().setAll(btnSim, btnNao);
+            cofirmacao.showAndWait().ifPresent(botao -> {
+                if (botao == btnSim) {
+                   Agenda.deletarContato(contato.getId());
+                   preencherTabela();
+                }
+            });
         }
     }
 
@@ -156,6 +185,10 @@ public class PrincipalController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        });
+
+        item_deletar.setOnAction(action -> {
+            deletar();
         });
     }
 }

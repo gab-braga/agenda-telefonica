@@ -125,4 +125,40 @@ public class Agenda {
         fecharConexao();
         return contatos;
     }
+
+    public static boolean atualizarContato(Contato contato) {
+        boolean flag = false;
+        abrirConexao();
+        try {
+            String sql = "UPDATE contato SET nome = ?, telefone = ?, email = ?, endereco = ? WHERE id = ?;";
+            PreparedStatement declaracao = conexao.prepareStatement(sql);
+            declaracao.setString(1, contato.getNome());
+            declaracao.setString(2, contato.getTelefone());
+            declaracao.setString(3, contato.getEmail());
+            declaracao.setString(4, contato.getEndereco());
+            declaracao.setInt(5, contato.getId());
+            declaracao.executeUpdate();
+            flag = true;
+        } catch (SQLException e) {
+            System.err.println("ERRO (Atualizar Contato): " + e.getMessage());
+        }
+        fecharConexao();
+        return flag;
+    }
+
+    public static boolean deletarContato(int id) {
+        boolean flag = false;
+        abrirConexao();
+        try {
+            String sql = "DELETE FROM contato WHERE id = ?;";
+            PreparedStatement declaracao = conexao.prepareStatement(sql);
+            declaracao.setInt(1, id);
+            declaracao.executeUpdate();
+            flag = true;
+        } catch (SQLException e) {
+            System.err.println("ERRO (Atualizar Contato): " + e.getMessage());
+        }
+        fecharConexao();
+        return flag;
+    }
 }
