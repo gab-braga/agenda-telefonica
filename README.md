@@ -24,10 +24,10 @@ por meio da entrada do nome do contato o qual deseja-se consultar. Você pode ta
 * [Instalar e configurar o driver JDBC para conexão com MySQL](https://www.devmedia.com.br/instalar-e-configurar-o-driver-jdbc-para-mysql/6719)
 * [Criar uma conexão com Banco de Dados com JDBC](https://www.devmedia.com.br/java-crie-uma-conexao-com-banco-de-dados/5698)
 * [Manipular dados com JDBC](https://www.devmedia.com.br/manipulando-dados-com-jdbc-em-java/27287)
-* [Criar GUI com JavaFX](manipulando-dados-com-jdbc-em-java)
+* [Criar GUI com JavaFX](https://www.tutorialspoint.com/javafx/index.htm)
 * [Curso de Java para iniciantes](https://www.youtube.com/playlist?list=PLHz_AreHm4dkI2ZdjTwZA4mPMxWTfNSpR)
 * [Curso de POO com Java](https://www.youtube.com/playlist?list=PLHz_AreHm4dkqe2aR0tQK74m8SFe-aGsY)
-* [Curso de Java Completo 2021 (Exclusivo)](https://www.udemy.com/course-dashboard-redirect/?course_id=870252)
+* [Curso de Java Completo 2021 (Exclusivo)](https://www.udemy.com/course/fundamentos-de-programacao-com-java/)
 
 ## Dúvidas
 :point_right: braagaa.infor2@gmail.com
