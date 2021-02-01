@@ -3,7 +3,7 @@
 ## Introdução
 O projeto **Agenda Telefônica** foi desenvolvido com intuito de práticar meus estudos a respeito da linguagem de programação Java e mostrar para amigos e colegas
 a implementação de um CRUD, através de lives que serão ministradas por mim. O projeto foi sugerido pelo meu amigo e colega de faculdade,
-[Wanderson](https://github.com/WandersonGomes). O projeto foi desenvolvido seguindo o padrão MVC.
+[Wanderson](https://github.com/WandersonGomes).
 
 ## Tecnologias utilizadas
 * Java (1.8.0)
