@@ -30,4 +30,4 @@ por meio da entrada do nome do contato o qual deseja-se consultar. Você pode ta
 * [Curso de Java Completo 2021 (Exclusivo)](https://www.udemy.com/course/fundamentos-de-programacao-com-java/)
 
 ## Dúvidas
-:point_right: braagaa.infor2@gmail.com
+:point_right: braagaa.inf@hotmail.com
